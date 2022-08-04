@@ -258,10 +258,17 @@ app.get('/delete_service/:id/:name', function (req, res) {
 
 const path = require('path');
 
+
+
+
+require("dotenv").config()
+process.env.DEFAULT_PROTO_PACKAGE
+
+
 //Elmina el archivo proto y lo vuelve a crear con la cabecera
 const rutaProto = path.resolve(__dirname, 'proto', 'protofile.proto'); // -> Archivo de salida (proto)
 
-let protoPackage = "helloworld";
+let protoPackage = "testRoomScene";
 
 
 async function delete_protofile() {
@@ -485,7 +492,6 @@ app.post('/ejecuteService', async function (req, res) {
 
 
         let needsRefresh = false;
-
 
 
         if (hostname !== req.body.hostname && req.body.hostname !== null && req.body.hostname !== undefined && req.body.hostname !== "") {

@@ -1,12 +1,12 @@
 syntax = "proto3"; 
-package helloworld;
+package testRoomScene;
 service ServiceLights { 
   rpc SetLights (Request) returns (Reply)  {}
-} 
-message Reply {
-string IsOk = 1; 
 } 
 message Request {
 int32 idLight = 1; 
 bool Status = 2; 
+} 
+message Reply {
+string IsOk = 1; 
 } 
