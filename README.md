@@ -2,7 +2,8 @@
 @alreylz y Jesús Albarca Gordillo
 
 
-Todo
+
+To Do
 - Permitir cambiar nombre del paquete generado desde GUI
 - No se tienen en cuenta las dependencias entre servicios/mensajes/rpcs
 - No envía correctamente booleans (sale siempre true) -> ARREGLADO
