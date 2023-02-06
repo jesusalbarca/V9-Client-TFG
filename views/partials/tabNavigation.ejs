@@ -1,0 +1,80 @@
+<!-- Tab Navbar to navigate accross pages -->
+<link rel="stylesheet" type="text/css" href="main.css">
+<script>
+
+    window.onload = () => {
+
+        const activeTabName = <%- JSON.stringify(activeTab) %>;
+        console.log(`ACTIVE TAB - ${activeTabName}`);
+        let cssSelector = `form[name='${activeTabName}'] button`;
+        console.log(cssSelector);
+        let tabDOMElem = document.querySelector(cssSelector);
+        console.log(tabDOMElem);
+        tabDOMElem.classList.add("active");
+
+    }
+</script>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <form action="/" method="GET" name="home-tab">
+            <button class="nav-link" type="submit" role="tab">Home</button>
+        </form>
+
+        <form action="/ejecutar" method="GET" name="execute-tab">
+            <button class="nav-link" type="submit" role="tab">Ejecutar Servicios</button>
+        </form>
+
+        <form action="/insertar_service" method="GET" name="insert-tab">
+            <button class="nav-link" type="submit" role="tab">Crear Servicio
+            </button>
+        </form>
+
+        <form action="/mostrar_servicios" method="GET" name="show-services-tab">
+            <button class="nav-link" type="submit" role="tab">Servicios</button>
+        </form>
+
+        <form action="/mostrar_messages" method="GET" name="show-messages-tab">
+            <button class="nav-link" type="submit" role="tab">Mensajes</button>
+        </form>
+
+        <!-- Addition -> Quiero gestionar la creación de distintos archivos .proto -->
+        <form action="/configurar" method="GET" name="configure-tab">
+            <button class="nav-link" type="submit" role="tab"> Configurador</button>
+        </form>
+
+    </div>
+</nav>
+
+
+<%# PREVIOUS CODE FOR REFERENCE
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <form action="/" method="GET">
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="submit" role="tab" aria-controls="nav-profile" aria-selected="false">Home</button>
+
+        </form>
+
+        <form action="/ejecutar" method="GET">
+            <button class="nav-link " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="submit" role="tab" aria-controls="nav-profile" aria-selected="false">Ejecutar Servicios</button>
+
+        </form>
+
+        <form action="/insertar_service" method="GET">
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="submit" role="tab" aria-controls="nav-profile" aria-selected="false">Crear Servicio</button>
+
+        </form>
+        <form action="/mostrar_servicios" method="GET">
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="submit" role="tab" aria-controls="nav-profile" aria-selected="false">Servicios</button>
+
+        </form>
+        <form action="/mostrar_messages" method="GET">
+            <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="submit" role="tab" aria-controls="nav-profile" aria-selected="false">Mensajes</button>
+
+        </form>
+    </div>
+</nav>
+
+    %>
