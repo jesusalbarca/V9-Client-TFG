@@ -384,22 +384,20 @@ router.post('/ejecuteServicev2', async function (req, res) {
         console.dir(rqBody)
 
         const clientParams = {
-            host: req.body.hostname,
+            host: req.body.host,
             port: req.body.port,
             service: req.body.service,
             grpc: req.body.grpc,
             protofile: req.body.protofile,
             protoPackage: "testRoomScene",
             arguments: req.body.arguments
-
         }
-
 
         const protoPath = path.join(__dirname, "..", "..", "proto", "TestRoomScene.proto")
 
 
         // const stubMapGrpcServices = await grpcHelpers.loadProtofileToMap(protoPath, clientParams.protoPackage, clientParams.host, grpcServerPort = 50051);
-        const stubMapGrpcServices = await grpcHelpers.loadProtofileToMap(protoPath, clientParams.protoPackage, clientParams.host, grpcServerPort = 50051);
+        const stubMapGrpcServices = await grpcHelpers.loadProtofileToMap(protoPath, clientParams.protoPackage, clientParams.host, clientParams.port);
 
 
         console.group(" [>>>>] Requested execution of service! ")
@@ -440,21 +438,25 @@ router.post('/ejecuteServicev2', async function (req, res) {
         console.log(stubMapGrpcServices)
 
 
+    //EXECUTE
+
         stubMapGrpcServices[clientParams.grpc](
             objRequest,
             function (err, response) {
                 if (err != null) {
-                    console.log('SERVIDOR NO CONECTADO');
-                    alert('SERVIDOR NO CONECTADO');
+                    console.log(' ⚠ SERVER NOT CONENCTED');
+                    alert('⚠ SERVER NOT CONENCTED');
                     console.log(err);
-                    alert(err.details);
+                    // alert(err.details);
 
-                } else {
-                    console.log("Error executing the grpc")
-                    console.log(response);
+                }
+
+                if(!err){
+
+                    console.log(`✅ EXECUTED GRPC ${response}`.green());
                     console.log('Servidor:', response.message);
                     alert(response + response.message);
-                    res.redirect('/ejecutar');
+
                 }
             });
 

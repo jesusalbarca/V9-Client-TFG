@@ -5,25 +5,16 @@ window.addEventListener("load", async (event) => {
 });
 
 
+/*
+    MAIN FUNCTION
+ */
+
+
 async function main() {
 
-    // document.querySelector("#proto-load-btn")
     console.log("Ejecutando utils.js main()")
 
-    // load all existing protofiles to allow selection of those.
-    async function loadAvailableProtosAsDropdownOptions() {
-
-        let response = await getExistingProtofiles();
-        console.log(response);
-        let htmlOptions = "<option value='null' disabled > Choose a value </option>";
-
-        for (let pFile of response) {
-            htmlOptions += `<option value='${pFile}' > ${pFile} </option>`;
-        }
-        document.querySelector("select[name='protofile']").innerHTML = htmlOptions;
-
-
-    };
+    // Load all existing protofiles to allow selection of those.
     await loadAvailableProtosAsDropdownOptions();
 
 
@@ -36,14 +27,6 @@ async function main() {
 
     })
 }
-
-
-// XMLHttpRequest is the object we use to perform HttpRequests in Javascript
-// const xhttp = new XMLHttpRequest();
-
-
-//To be performed when the request gets a response
-// xhttp.onreadystatechange =
 
 
 function getExistingProtofiles() {
@@ -96,7 +79,6 @@ async function getGrpcTypesAndGenerateCallerDivs() {
     let parsedJSON = JSON.parse(response);
 
     console.log(parsedJSON.messages)
-    // console.log(parsedJSON)
 
 
     const mainDiv = document.querySelector("#div_principal");
@@ -158,7 +140,6 @@ async function ExecuteGrpc(elem, name) {
     let grpc = elem.form.getAttribute("name");
 
 
-
     //search and generate all data parameters
 
     let fields = elem.form.querySelectorAll("input");
@@ -169,7 +150,7 @@ async function ExecuteGrpc(elem, name) {
         host: ip,
         port: port,
         service: "ServiceLights",
-        grpc:grpc,
+        grpc: grpc,
         protofile: "TestRoomScene.proto",
         protoPackage: "testRoomScene",
         arguments: {}
@@ -208,11 +189,25 @@ async function ExecuteGrpc(elem, name) {
 }
 
 
+async function loadAvailableProtosAsDropdownOptions() {
+    let response = await getExistingProtofiles();
+    console.log(response);
+    let htmlOptions = "<option value='null' disabled > Choose a value </option>";
+
+    for (let pFile of response) {
+        htmlOptions += `<option value='${pFile}' > ${pFile} </option>`;
+    }
+    document.querySelector("select[name='protofile']").innerHTML = htmlOptions;
+};
+
 //REQUEST TYPES
 // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 //             xhttp.setRequestHeader('Content-type', 'application/json');
 //             xhttp.setRequestHeader('Content-type', 'text/plain');
 //             xhttp.setRequestHeader('Content-type', 'multipart/form-data');
+
+
+/* Helper functions */
 
 
 async function PostRequestAsyncJson(url, bodyObj) {

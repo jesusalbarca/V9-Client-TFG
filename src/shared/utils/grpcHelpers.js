@@ -403,8 +403,9 @@ async function loadProtofileToMap(protoFilePath, protoPackageToLoad, grpcServerA
         const AService = grpc.loadPackageDefinition(packageDefinition)[`${protoPackageToLoad}`].ServiceLights;
 
         console.log(AService)
-        const client = new AService(
-            `${grpcServerAddress}:${grpcServerPort}`,
+
+        console.log(grpcServerAddress)
+        const client = new AService(`${grpcServerAddress}:${grpcServerPort}`,
             grpc.credentials.createInsecure()
         );
         // LOOKING FOR SERVICES in the package
