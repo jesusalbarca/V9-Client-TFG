@@ -1,0 +1,22 @@
+// ROOT PROJECT - Typescript configuration file
+// ./
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "./build",
+    // if out path for a file is same as its src path, nothing will be emitted
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "composite": true,
+    // required on the dependency project for references to work
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    //    "incremental": false
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"]
+}

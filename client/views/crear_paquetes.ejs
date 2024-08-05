@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+    <link rel="stylesheet" type="text/css" href="style/GrpcSyntaxHighlighting.css">
+
+    <title>Full package creator WIP</title>
+    <style>
+        .container {
+            max-width: 1200px;
+        }
+
+        .form_crear {
+            padding: 1.5%;
+        }
+    </style>
+    <!--    <link href="/style/main.css" rel="stylesheet" type="text/css"/>-->
+
+    <link href="/style/grpcEdit.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="favicon" type="image/svg" href="/favicon.ico">
+</head>
+<body>
+
+
+<%- include('partials/tabNavigation') %>
+
+<% const SHOW = {
+    packages: false,
+    services: false,
+    grpcs: false,
+    messages: true
+} %>
+
+<main class="container">
+
+    <div class="shadow-lg pb-3 mb-5 bg-body rounded ">
+
+        <% if(SHOW.packages){ %>
+            <form id="package-create-form" action="/crear_paquete" method="POST">
+                <style>
+                    #package-create-form {
+                        border: solid 1em teal;
+                    }
+                </style>
+
+                <h2> Create a package </h2>
+
+                <label>Package name </label>
+                <input name="package_name" type="text"/>
+                <label> Package description</label>
+                <textarea name="package_description" type="text"> </textarea>
+                <div id="here">
+                    HERE SHOULD GO THE RPC PREVIEW
+
+                </div>
+
+
+                <!-- Select con los servicios disponibles -->
+
+                <select>
+                    <option>Service 1</option>
+                    <option>Service 2</option>
+                    <option>Service 3</option>
+                </select>
+
+                <button type="button" id="add-service-to-package">Add</button>
+
+                <div id="test">
+
+
+                </div>
+
+
+                <button type="button" data-action="commit"> Done</button>
+
+
+                <script defer src="/cli-js/PackageEdit.js" type="module"></script>
+            </form>
+
+        <% } %>
+
+        <% if(SHOW.services) { %>
+
+            <!-- FORM SERVICE CREATION -->
+            <form id="service-create-form" action="/create_service" method="POST">
+
+                <script defer type="module" src="/cli-js/ServicesEdit.js"></script>
+                <style>
+                    #service-create-form {
+                        border: solid 1em yellow;
+                    }
+                </style>
+
+                <h2> Create a service </h2>
+
+
+                <div>
+
+
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="name" class="col-sm-2 col-form-label">Service name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" name="description" id="description"
+                                  required> </textarea>
+                    </div>
+                </div>
+
+
+                <div id="rpcs-in-service">
+
+                    <pre> Aquí se insertarán los rpcs</pre>
+
+
+                </div>
+
+
+                <div class="d-flex flex-row bd-highlight mb-3">
+
+                    <div class="p-2 bd-highlight">Choose an RPC to add</div>
+                    <select>
+                        <!-- Options will autogenerate depending on the available grpcs -->
+                    </select>
+                    <button id="add-rpc-to-service" type="button" class="btn btn-success">+</button>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button id="add_new_service" type="submit" class="btn btn-primary">Create Service</button>
+                </div>
+            </form>
+            <!-- END FORM SERVICE CREATION -->
+
+        <% } %>
+
+        <hr/>
+
+        <% if(SHOW.grpcs) { %>
+            <!-- FORM GRPC CREATION -->
+            <form id="rpc-create-form" action="/create_rpc" method="POST">
+                <script defer type="module" src="/cli-js/GrpcEdit.js"></script>
+                <link rel="stylesheet" href="/style/GrpcSyntaxHighlighting.css">
+                <style>
+                    form#rpc-create-form {
+                        border: 0.5em solid #002b36;
+                        padding: 2em;
+                    }
+
+                    h2 {
+                        text-decoration: underline;
+                    }
+
+
+                </style>
+                <h2 class="row ">Create a Remote control function </h2>
+                <pre>
+                Brief description of what RPCs are and represent
+            </pre>
+
+                <div class="row mb-3">
+                    <label for="name" class="col-sm-2 col-form-label">GrpcName</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name"
+                               placeholder="Choose a name for your function (e.g., SetLights)" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">RequestMessageType</label>
+                    <div class="col-sm-10">
+                        <select name="requestMessageType" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">RequestMessageType</label>
+                    <div class="col-sm-10">
+                        <select name="replyMessageType" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button id="add_new_message" type="submit" class="btn btn-primary">Create Function</button>
+                </div>
+
+
+            </form>
+            <!-- END FORM GRPC CREATION -->
+
+
+            <!-- SHOW EXISTING GRPCs -->
+            <div id="existing_grpcs">
+                <h2> Mis RPCs</h2>
+
+                <style>
+
+                    #existing_grpcs {
+                        border: 0.5em solid #002b36;
+                        padding: 2em;
+                    }
+                </style>
+
+                <table id="tabla_rpcs" class="table mt-4">
+
+
+                </table>
+
+
+                <pre> Aquí aparecen los rpcs que ha creado el usuario</pre>
+            </div>
+
+        <% } %>
+
+        <hr/>
+
+        <% if(SHOW.messages) { %>
+
+            <!-- FORM MESSAGE CREATION  -->
+            <form id="msg-create-form" class="form_crear" action="/create_message_v2" method="POST">
+                <script defer type="module" src="/cli-js/MessageEdit.js"></script>
+
+
+                <style>
+                    form#msg-create-form {
+                        border: 0.5em solid red;
+                        padding: 2em;
+                    }
+
+                    h2 {
+                        text-decoration: underline;
+
+                    }
+                </style>
+
+
+                <h2 class="row ">Create a Message</h2>
+                <pre>
+                Brief description of what messages are and represent
+                Messages represent the Parameter and Return types of a traditional function.
+                They will be used as baseline to create more complex behaviours.
+                </pre>
+
+                <!-- Message name input -->
+                <div class="row mb-3 ">
+                    <label for="messageName" class="col-sm-2 col-form-label">Name of message</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="messageName"
+                               placeholder="E.g. MyMessage" required/>
+                    </div>
+                </div>
+
+                <!-- Add attributes button -->
+                <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 bd-highlight">Add fields to your message</div>
+                    <button id="add_attribute" type="button" class="btn btn-success">+</button>
+                </div>
+
+                <fieldset id="message-field-container">
+                    <pre> Aquí van los campos </pre>
+                </fieldset>
+
+                <!-- Crear nuevos atributos para un mensaje -->
+
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button id="add_new_message" type="submit" class="btn btn-primary">Create Message Type</button>
+                </div>
+
+            </form>
+            <!-- END FORM MESSAGE CREATION -->
+
+
+
+
+
+
+            <table id="tablaMessages" class="table mt-4">
+                <thead>
+                <tr>
+                    <th style="display:none">id</th>
+                    <th>Nombre Mensaje</th>
+                    <th>Atributos Asociados
+
+                    </th>
+
+                </tr>
+                </thead>
+                <% messages.forEach( (message) => { %>
+                    <tr style="background-color: #10434e;">
+                        <td style="display:none"><%= message._id %></td>
+                        <td style="color:#1d61d8;font-size: 22px;"><%= message.messageName %></td>
+                        <td>
+                            <% var i = 1; %>
+
+                            <ul>
+                                <% message.messageFields.forEach((types) => { %>
+
+                                    <li><a style="color:#fffbf3">Nombre Atrb<%= i %>:</a> <a
+                                                style="color:#1bf3d7"> <%= types.dataName %></a> <a
+                                                style="color:#f3fed4">(<%= types.dataType %>)</a></li>
+                                    <% i++; %>
+                                <% }) %>
+
+                            </ul>
+
+                        </td>
+                        <td>
+                            <!--
+                              boton editar
+                              <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+
+                            -->
+                            <a href="/delete_message/<%= message._id %>/<%= message.name %>"
+                               class="btn btn-outline-danger bi bi-trash"
+                               onclick="return confirm('Are you sure?');"></a>
+                        </td>
+                    </tr>
+
+                <% }) %>
+            </table>
+
+        <% } %>
+    </div>
+</main>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+<%- include("partials/footer") %>
+</body>
+
+
+</html>

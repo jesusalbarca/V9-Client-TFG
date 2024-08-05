@@ -1,0 +1,48 @@
+/**
+  Este archivo contiene los estilos para el resaltado los diferentes elementos
+   de grpc en el editor la interfaz visual
+*/
+.package-name-display {
+  color: #d33682;
+}
+
+.variable-name-display {
+  font-family: Monospaced;
+  color: #ffa544;
+}
+
+.datatype-display {
+  color: #1bf3d7;
+}
+
+.arg-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #ffc6e2;
+}
+
+.rpc-name-display {
+  color: #31d1ff;
+}
+
+.return-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #f3fed4;
+}
+
+.subtype {
+  border: 1px solid white;
+}
+
+.service-name-display {
+  border-radius: 0.3em;
+  padding: 0.2em;
+  background-color: #ff4c73;
+  font-size: large;
+  color: white;
+}
+
+/*# sourceMappingURL=GrpcSyntaxHighlighting.css.map */

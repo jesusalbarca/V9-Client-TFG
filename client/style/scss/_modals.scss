@@ -1,0 +1,92 @@
+@use 'theme.scss';
+/* Modal */
+
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1em;
+
+  input {
+    border: theme.$dei-blue 0.2ex solid;
+    padding: 1ex 0.5em;
+  }
+
+}
+
+
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal-form {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+  padding: 1em;
+
+  border: theme.$s2ms-black 0.2em solid;
+  background-color: white;
+
+}
+
+.modal-form header {
+
+  width: 90%;
+
+  height: fit-content;
+  display: inline-grid;
+  grid: auto-flow / 1fr 0.2fr;
+  align-items: center;
+  padding: 0.2em;
+  border-radius: 0.2em;
+
+  background-color: theme.$dei-blue;
+
+
+}
+
+.modal-form header h1 {
+
+  text-align: center;
+}
+
+.modal-form fieldset {
+  padding: 1em 2em;
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+}
+
+.modal-form fieldset label {
+  color: theme.$s2ms-black;
+  display: flex;
+  flex-flow: column;
+  gap: 0.5em;
+}
+
+
+
+
+.close-modal {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}

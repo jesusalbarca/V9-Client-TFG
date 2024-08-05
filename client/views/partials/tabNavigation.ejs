@@ -1,0 +1,82 @@
+<!-- Tab Navbar to navigate accross pages -->
+<script>
+
+    window.onload = () => {
+
+        const activeTabName = <%- JSON.stringify(activeTab) %>;
+        console.log(`ACTIVE TAB - ${activeTabName}`);
+        let cssSelector = `form[name='${activeTabName}'] button`;
+        console.log(cssSelector);
+        let tabDOMElem = document.querySelector(cssSelector);
+        console.log(tabDOMElem);
+        tabDOMElem.classList.add("active");
+
+    }
+
+
+</script>
+
+<%- include("header") %>
+
+<%- include("cUIStatusMessage") %>
+
+
+<nav>
+
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <form action="/" method="GET" name="home-tab">
+            <button class="nav-link" type="submit" role="tab">Home</button>
+        </form>
+
+        <% if ( session.logged == true ){ %>
+
+
+            <form action="/package_editor" method="GET" name="package-editor-tab">
+                <button class="nav-link" type="submit" role="tab"> Full package editor
+                </button>
+            </form>
+
+
+
+            <form action="/service_editor" method="GET" name="insert-tab">
+                <button class="nav-link" type="submit" role="tab"> Service Editor
+                </button>
+            </form>
+            <form action="/execute_services" method="GET" name="execute-tab">
+                <button class="nav-link" type="submit" role="tab">Execute Services</button>
+            </form>
+
+
+
+
+
+
+            <form action="/messages" method="GET" name="show-messages-tab">
+                <button class="nav-link" type="submit" role="tab">Messages</button>
+            </form>
+
+            <form action="/services" method="GET" name="show-services-tab">
+                <button class="nav-link" type="submit" role="tab">Services</button>
+            </form>
+
+
+
+            <form action="/packages" method="GET" name="show-packages-tab">
+                <button class="nav-link" type="submit" role="tab">Packages</button>
+            </form>
+
+
+
+
+
+            <form action="/cameras" method="GET" name="cameras">
+                <button class="nav-link" type="submit" role="tab">Cameras</button>
+            </form>
+        <% } %>
+
+        <%= JSON.stringify(session) %>
+
+
+    </div>
+</nav>

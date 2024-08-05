@@ -1,0 +1,20 @@
+@use "modals.scss";
+@use "theme.scss";
+@use "commons.scss";
+
+
+/**
+ Making footer be at the bottom even if almost no content in the page
+ */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+

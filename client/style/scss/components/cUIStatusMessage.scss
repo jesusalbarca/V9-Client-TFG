@@ -1,0 +1,157 @@
+@use '../theme.scss';
+/*
+  Status message "window" (to inform users about the status of the app)
+ */
+
+
+.status-msg {
+
+  position: fixed;
+  z-index: 10;
+  bottom: 5%;
+  right: 5%;
+  min-width: 20vw;
+  max-width: 40%;
+
+  border-radius: 0.5em;
+  border: 0.2em solid;
+  display: flex;
+  flex-flow: column;
+  flex: 0.2fr 1fr;
+
+  & > * {
+    padding: 0.2em 1em;
+  }
+
+  header {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    & > * {
+      color: white;
+    }
+
+
+  }
+
+  p {
+
+    margin:initial;
+    display: flex;
+
+
+
+    text-align: justify;
+    flex-direction: column;
+    background-color: white;
+    height: content-box;
+
+    row-gap: 1em;
+    /* Style of the close button */
+    & [class$="btn"], [class^="btn"] {
+
+      align-self: stretch;
+      background-color: theme.$s2ms-black;
+        color: white;
+    }
+
+  }
+
+
+
+
+}
+
+.status-msg.info {
+  border-color: theme.$s2ms-black;
+
+  header {
+    background-color: theme.$s2ms-black;
+    color: white;
+  }
+}
+
+.status-msg.success {
+  border-color: theme.$accent-success;
+
+  header {
+    background-color: theme.$accent-success;
+    color: white;
+  }
+}
+
+.status-msg.warning {
+  border-color: theme.$accent-warn;
+
+  header {
+    background-color: theme.$accent-warn;
+  }
+}
+
+.status-msg.error {
+  border-color: theme.$accent-error;
+
+  header {
+    background-color: theme.$accent-error;
+  }
+}
+
+
+
+
+/* Icons as background images within a <span> element */
+span.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 0 0 2em;
+  min-height: 1.5em;
+}
+
+span.success-icon {
+  background-image: url(theme.$iconsPath + "check.svg");
+  filter: invert(1);
+
+}
+
+span.error-icon {
+  filter: invert(1);
+  background-image: url(theme.$iconsPath + "error.svg");
+}
+
+span.warning-icon {
+  background-image: url(theme.$iconsPath + "warning.svg");
+  filter: invert(1);
+}
+
+span.info-icon {
+  background-image: url(theme.$iconsPath + "info.svg");
+  filter: invert(1);
+}
+
+
+
+
+/* Hide/Show the status messages */
+
+
+.hidden {
+  display: none !important;
+}
+
+.hidden-animated {
+  animation: animate-dissapear 0.7s forwards;
+}
+
+
+@keyframes animate-dissapear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

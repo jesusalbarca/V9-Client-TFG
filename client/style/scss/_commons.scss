@@ -1,0 +1,23 @@
+@use 'theme.scss';
+
+.hidden {
+  display: none !important;
+}
+
+.hidden-animated {
+  animation: animate-disappear 0.7s forwards;
+}
+
+
+@keyframes animate-disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+
