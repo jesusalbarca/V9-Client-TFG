@@ -1,3 +1,22 @@
+/* Fonts used throughout the project*/
+@font-face {
+  font-family: "New Amsterdam";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/NewAmsterdam/NewAmsterdam-Regular.ttf");
+}
+@font-face {
+  font-family: "Matemasie";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Matemasie/Matemasie-Regular.ttf");
+}
+@font-face {
+  font-family: "Rockwell";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Rockwell-Nova/RockwellNova.ttf");
+}
 .dei-blue {
   color: #0281B4;
 }

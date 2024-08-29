@@ -7,7 +7,6 @@ import {Package} from "./Classes/Package.js";
 // Representa el estado del formulario de crear paquete
 var package_tmp = new Package();
 
-
 async function main() {
 
 
@@ -109,7 +108,7 @@ async function generateServicePreview_HTML(serviceObj, appendTo) {
 
 
     //Full div template to preview a service
-    const servicePreview_HTMLTemplate = JSUtils.txtToHtmlNode(
+    const servicePreview_HTMLTemplate = JSUtils.txtToHtmlDocumentFragment(
         `<div id='service-preview-box' style="background-color: #1d61d8; display:flex;">
                 <h3> ${name} </h3>
                 <h2> ${description} </h2>
@@ -148,7 +147,7 @@ function ShowAvailableServiceOptions(selectHTMLItem, serviceOptions) {
     let optionsList_HtmlNodes = []
 
     serviceOptions.forEach(s => {
-        optionsList_HtmlNodes.push(JSUtils.txtToHtmlNode(JSUtils.replaceTemplatePlaceholders(option_HTMLTemplate,
+        optionsList_HtmlNodes.push(JSUtils.txtToHtmlDocumentFragment(JSUtils.replaceTemplatePlaceholders(option_HTMLTemplate,
             {
                 type: s.name,
                 displayType: s.name

@@ -1,3 +1,23 @@
+@charset "UTF-8";
+/* Fonts used throughout the project*/
+@font-face {
+  font-family: "New Amsterdam";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/NewAmsterdam/NewAmsterdam-Regular.ttf");
+}
+@font-face {
+  font-family: "Matemasie";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Matemasie/Matemasie-Regular.ttf");
+}
+@font-face {
+  font-family: "Rockwell";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Rockwell-Nova/RockwellNova.ttf");
+}
 .dei-blue {
   color: #0281B4;
 }
@@ -12,6 +32,184 @@
 
 .dei-magenta {
   color: #FF4A8C;
+}
+
+form .form-header {
+  font-family: "Rockwell";
+  position: relative;
+  border-bottom: 0.1rem solid white;
+  padding: 1em;
+}
+form .form-header .header-logo {
+  position: absolute;
+  top: -4em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4em;
+  height: 4em;
+  background-color: #486771;
+  border-radius: 50%;
+  padding: 0.5em;
+}
+form .form-header .form-description {
+  border: 0.2rem solid white;
+}
+
+button {
+  background-color: #654e6f;
+  color: white;
+  font-weight: bold;
+  border: 0.2rem solid #3d3d3d;
+  filter: drop-shadow(0px 4px 5px #486771);
+  font-size: 1.5rem;
+  border-radius: 1em;
+  padding: 0.2em 1em;
+}
+
+.label-field-block {
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  column-gap: 0.5em;
+  justify-content: space-between;
+  align-content: center;
+  position: relative;
+}
+.label-field-block label, .label-field-block input {
+  max-height: 2em;
+  min-height: 1em;
+}
+.label-field-block label {
+  flex: 1 1 0.6fr;
+  word-break: break-word;
+}
+.label-field-block input {
+  flex: 1 1 1fr;
+}
+.label-field-block > span {
+  flex: 100%;
+}
+
+form {
+  min-width: 50%;
+  max-width: 90%;
+  margin: auto;
+  padding: 1rem;
+  color: white;
+  background-color: #3d3d3d;
+  text-align: center;
+  filter: drop-shadow(0px 0px 43px #654e6f);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2em;
+  position: relative;
+}
+form input {
+  border-radius: 0.2rem;
+}
+form > :not(button) {
+  align-self: stretch;
+}
+form:has(input.invalid)::before {
+  content: "⚡Error message would be displayed here";
+  position: absolute;
+  border: 1px solid red;
+  border-radius: 1em;
+  padding: 0.3rem;
+  background-color: #f5a142;
+  bottom: -1em;
+  left: 0;
+  transform: translate(50%);
+  z-index: 1;
+}
+form input {
+  max-width: 100%;
+  padding: 0.2rem;
+}
+form input::placeholder {
+  color: #3d3d3d;
+}
+form input.valid {
+  border: 0.2rem green solid;
+  background-color: white;
+}
+form input.invalid {
+  border: 2px solid #DB4B4B;
+}
+form .hide {
+  display: none !important;
+}
+form .inline-status {
+  border: 1px solid purple;
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+form .inline-status .status-message {
+  align-self: stretch;
+  align-content: center;
+}
+form .inline-status.info .inline-status-icon:not(.info) {
+  display: none;
+}
+form .inline-status.info .inline-status-icon.info {
+  display: flex;
+}
+form .inline-status.correct .inline-status-icon:not(.correct) {
+  display: none;
+}
+form .inline-status.correct .inline-status-icon.correct {
+  display: flex;
+}
+form .inline-status.error .inline-status-icon:not(.error) {
+  display: none;
+}
+form .inline-status.error .inline-status-icon.error {
+  display: flex;
+}
+form .inline-status.minus .inline-status-icon:not(.minus) {
+  display: none;
+}
+form .inline-status.minus .inline-status-icon.minus {
+  display: flex;
+}
+form .inline-status-icon {
+  display: flex;
+  align-self: center;
+}
+form .inline-status-icon > svg {
+  max-width: 2em;
+  max-height: 2em;
+}
+form .inline-status-icon.correct svg > g {
+  fill: #2DDC7F;
+}
+form .inline-status-icon.minus svg > g {
+  fill: #E5EB44;
+}
+form .inline-status-icon.error svg > g {
+  fill: #DB4B4B;
+}
+form .inline-status-icon.info svg > g {
+  fill: #42ACB4;
+}
+
+/* This is for the set of fields of a message + remove button */
+form .message-field-template {
+  display: flex;
+  gap: 1em;
+}
+form .message-field-template select {
+  flex-basis: 0.5fr;
+}
+form .message-field-template input {
+  flex-basis: 1fr;
 }
 
 /* Add this if you want to debug a given element */
@@ -97,9 +295,104 @@ footer .credits ul li a {
   font-size: 0.8em;
 }
 
+/**
+  Este archivo contiene los estilos para el resaltado los diferentes elementos
+   de grpc en el editor la interfaz visual
+*/
+.package-name-display {
+  color: #d33682;
+}
+
+.variable-name-display {
+  font-family: Monospaced;
+  color: #ffa544;
+}
+
+.datatype-display {
+  color: #1bf3d7;
+}
+
+.arg-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #ffc6e2;
+}
+
+.rpc-name-display {
+  color: #31d1ff;
+}
+
+.return-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #f3fed4;
+}
+
+.subtype {
+  border: 1px solid white;
+}
+
+.service-name-display {
+  border-radius: 0.3em;
+  padding: 0.2em;
+  background-color: #ff4c73;
+  font-size: large;
+  color: white;
+}
+
+/* This implementation of a custom icon system using css is based on
+  https://css-tricks.com/creating-a-maintainable-icon-system-with-sass/
+ */
+/* Helper function for string replecement in SASS*/
+.button {
+  appearance: none;
+  background: none;
+  border: 3px solid #d95a2b;
+  border-radius: 100em;
+  color: #d95a2b;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 48px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 200ms ease-in-out;
+  transition-property: background-color, color;
+}
+.button:hover, .button:active, .button:focus {
+  background: #d95a2b;
+  color: #fff;
+}
+.button::before, .button::after {
+  background: center/24px 24px no-repeat;
+  border-radius: 100em;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+}
+.button.icon-only::before, .button.icon-only::after {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  transform: translate(-50%);
+}
+.button--download::before {
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="30.544" height="25.294" viewBox="0 0 30.544 25.294"><g transform="translate(-991.366 -1287.5)"><path d="M1454.5,1298.922l6.881,6.881-6.881,6.881" transform="translate(2312.404 -157.556) rotate(90)" fill="none" stroke="%23d95a2b" stroke-width="3"/><path d="M8853.866,5633.57v9.724h27.544v-9.724" transform="translate(-7861 -4332)" fill="none" stroke="%23d95a2b" stroke-linejoin="round" stroke-width="3"/><line y2="14" transform="translate(1006.5 1287.5)" fill="none" stroke="%23d95a2b" stroke-width="3"/></g></svg>');
+}
+.button--download::after {
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="30.544" height="25.294" viewBox="0 0 30.544 25.294"><g transform="translate(-991.366 -1287.5)"><path d="M1454.5,1298.922l6.881,6.881-6.881,6.881" transform="translate(2312.404 -157.556) rotate(90)" fill="none" stroke="%23fff" stroke-width="3"/><path d="M8853.866,5633.57v9.724h27.544v-9.724" transform="translate(-7861 -4332)" fill="none" stroke="%23fff" stroke-linejoin="round" stroke-width="3"/><line y2="14" transform="translate(1006.5 1287.5)" fill="none" stroke="%23fff" stroke-width="3"/></g></svg>');
+}
+
 form#msg-create-form.form_crear {
-  border: red 1px solid;
-  background-color: red;
+  border: teal 1px solid;
+  background-color: teal;
 }
 @media (max-width: 39.9375em) {
   form#msg-create-form.form_crear::before {

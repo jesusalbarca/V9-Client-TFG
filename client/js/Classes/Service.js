@@ -16,8 +16,7 @@ export class Service extends EventManager {
             console.log("@state - Service Updated: ", s);
         });
     }
-
-
+    
     set name(value) {
         if (value === this._name || value === "")
             return;

@@ -179,7 +179,7 @@ async function setRPCTypesAsSelectOptions(selectHTMLItem, rpcs, blacklist = []) 
                 displayType: rpc.rpcName
             });
 
-        optionsList.push(JSHelpers.txtToHtmlNode(actualOption));
+        optionsList.push(JSHelpers.txtToHtmlDocumentFragment(actualOption));
         option_count++;
     })
 
@@ -189,7 +189,7 @@ async function setRPCTypesAsSelectOptions(selectHTMLItem, rpcs, blacklist = []) 
     // If there are no more RPCs available, disable the select element completely
     if (option_count === 0) {
 
-        optionsList.push(JSHelpers.txtToHtmlNode(`<option selected="true" selected disabled>No more RPCs available</option>`));
+        optionsList.push(JSHelpers.txtToHtmlDocumentFragment(`<option selected="true" selected disabled>No more RPCs available</option>`));
     }
 
     selectHTMLItem.replaceChildren(...optionsList)

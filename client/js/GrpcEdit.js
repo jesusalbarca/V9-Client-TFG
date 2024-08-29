@@ -61,7 +61,7 @@ function setMessageTypesAsSelectOptions(selectHTMLItem, messages) {
 
 
         selectHTMLItem.append(
-            JSHelpers.txtToHtmlNode(actualOption));
+            JSHelpers.txtToHtmlDocumentFragment(actualOption));
     })
 
 }
@@ -86,7 +86,7 @@ export async function showRPCInfoHTML(whereTo, rpcs) {
     await rpcs.forEach(rpc => {
 
         rpcsInfoListToDisplay.push(
-            JSHelpers.txtToHtmlNode(JSHelpers.replaceTemplatePlaceholders(rpcINfoDisplay_HTMLTemplate, {
+            JSHelpers.txtToHtmlDocumentFragment(JSHelpers.replaceTemplatePlaceholders(rpcINfoDisplay_HTMLTemplate, {
                 returnType: rpc.returnType.messageName,
                 grpcName: rpc.rpcName,
                 argType: rpc.argsType.messageName

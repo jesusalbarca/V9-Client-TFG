@@ -30,10 +30,11 @@ It enables:
 - Only supports UNARY RPCs NO support for bidirectional RPCs.
 - Only works in LAN (since the RPC server runs in the Unity application).
 
-# Authors
+# Main Contributors
 
-**Alejandro Rey López** (Javascript Front and backend development, Unity package development)
-**Jesús Albarca Gordillo** (Initial prototype development)
+[**Alejandro Rey López**](http://alreylz.me) (Javascript Front and backend development, Unity package development)
+
+[**Jesús Albarca Gordillo**](https://jesusalbarca.es/) (Initial prototype development, BsC. Thesis Student)
 
 ## Getting started
 

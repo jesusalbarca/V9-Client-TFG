@@ -3,13 +3,14 @@
 
     window.onload = () => {
 
-        const activeTabName = <%- JSON.stringify(activeTab) %>;
-        console.log(`ACTIVE TAB - ${activeTabName}`);
-        let cssSelector = `form[name='${activeTabName}'] button`;
-        console.log(cssSelector);
-        let tabDOMElem = document.querySelector(cssSelector);
-        console.log(tabDOMElem);
-        tabDOMElem.classList.add("active");
+        //TODO: review me (showing active tab)
+        <!--const activeTabName = <%- JSON.stringify(activeTab) %>;-->
+        <!--console.log(`ACTIVE TAB - ${activeTabName}`);-->
+        <!--let cssSelector = `nav a [name='${activeTabName}']`;-->
+        <!--console.log(cssSelector);-->
+        <!--let tabDOMElem = document.querySelector(cssSelector);-->
+        <!--console.log(tabDOMElem);-->
+        <!--tabDOMElem.classList.add("active");-->
 
     }
 
@@ -21,62 +22,20 @@
 <%- include("cUIStatusMessage") %>
 
 
-<nav>
+<nav class="nav nav-tabs">
 
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a href="/" class="nav-link" role="tab">Home</a>
 
-        <form action="/" method="GET" name="home-tab">
-            <button class="nav-link" type="submit" role="tab">Home</button>
-        </form>
+    <% if ( session.logged == true ){ %>
+        <a href="/package_editor" class="nav-link" role="tab">Full package editor</a>
+        <a href="/service_editor" class="nav-link" role="tab">Service Editor</a>
+        <a href="/execute_services" class="nav-link" role="tab">Execute Services</a>
+        <a href="/messages" class="nav-link" role="tab">Messages</a>
+        <a href="/services" class="nav-link" role="tab">Services</a>
+        <a href="/packages" class="nav-link" role="tab">Packages</a>
+        <a href="/cameras" class="nav-link" role="tab">Cameras</a>
+    <% } %>
 
-        <% if ( session.logged == true ){ %>
+    <%= JSON.stringify(session) %>
 
-
-            <form action="/package_editor" method="GET" name="package-editor-tab">
-                <button class="nav-link" type="submit" role="tab"> Full package editor
-                </button>
-            </form>
-
-
-
-            <form action="/service_editor" method="GET" name="insert-tab">
-                <button class="nav-link" type="submit" role="tab"> Service Editor
-                </button>
-            </form>
-            <form action="/execute_services" method="GET" name="execute-tab">
-                <button class="nav-link" type="submit" role="tab">Execute Services</button>
-            </form>
-
-
-
-
-
-
-            <form action="/messages" method="GET" name="show-messages-tab">
-                <button class="nav-link" type="submit" role="tab">Messages</button>
-            </form>
-
-            <form action="/services" method="GET" name="show-services-tab">
-                <button class="nav-link" type="submit" role="tab">Services</button>
-            </form>
-
-
-
-            <form action="/packages" method="GET" name="show-packages-tab">
-                <button class="nav-link" type="submit" role="tab">Packages</button>
-            </form>
-
-
-
-
-
-            <form action="/cameras" method="GET" name="cameras">
-                <button class="nav-link" type="submit" role="tab">Cameras</button>
-            </form>
-        <% } %>
-
-        <%= JSON.stringify(session) %>
-
-
-    </div>
 </nav>

@@ -1,12 +1,15 @@
 @use "modals.scss";
 @use "theme.scss";
 @use "commons.scss";
-
+@use "footer";
+@use "header";
+@use "nav";
+@use 'forms';
+@use 'icons';
 
 /**
  Making footer be at the bottom even if almost no content in the page
  */
-
 body {
   min-height: 100vh;
   display: flex;

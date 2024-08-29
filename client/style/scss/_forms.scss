@@ -1,0 +1,289 @@
+@use 'sass:color';
+@use 'theme';
+@use 'animations';
+
+$yellowish: #c2b04f;
+$purplish: #654e6f;
+$greyish: #3d3d3d;
+$blueish: #486771;
+
+//
+// Inline validation colors
+$color-alert-green: #2DDC7F;
+$color-alert-yellow: #E5EB44;
+$color-alert-red: #DB4B4B;
+$color-alert-blue: #42ACB4;
+
+
+form .form-header {
+
+  font-family: 'Rockwell'; //, sans-serif;
+
+  position: relative;
+  border-bottom: 0.1rem solid white;
+  padding: 1em;
+
+  .header-logo {
+    position: absolute;
+
+    top: -4em;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2* 2em;
+    height: 2* 2em;
+
+    background-color: $blueish;
+    border-radius: 50%;
+    padding: 0.5em;
+
+  }
+
+
+  .form-description {
+    border: 0.2rem solid white;
+  }
+
+}
+
+
+button {
+  background-color: $purplish;
+  color: white;
+  font-weight: bold;
+
+  border: 0.2rem solid $greyish;
+  filter: drop-shadow(0px 4px 5px $blueish);
+
+  font-size: 1.5rem;
+  border-radius: 1em;
+  padding: 0.2em 1em;
+}
+
+
+.label-field-block {
+
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  column-gap: 0.5em;
+  justify-content: space-between;
+  align-content: center;
+  position: relative;
+
+
+  label, input {
+    max-height: 2em;
+    min-height: 1em;
+  }
+
+  label {
+    flex: 1 1 0.6fr;
+    word-break: break-word;
+  }
+
+  input {
+    flex: 1 1 1fr;
+  }
+
+  > span {
+    flex: 100%;
+  }
+
+}
+
+form {
+
+  min-width: 50%;
+  max-width: 90%;
+  // width:90%;
+  margin: auto;
+  padding: 1rem;
+
+  color: white;
+  background-color: $greyish;
+  text-align: center;
+
+
+  filter: drop-shadow(0px 0px 43px $purplish);
+
+
+  border-radius: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  row-gap: 2em;
+
+  position: relative;
+
+  input {
+
+    border-radius: 0.2rem;
+  }
+
+
+  & > :not(button) {
+    align-self: stretch;
+  }
+
+  &:has(input.invalid) {
+    // Shows the status of the field
+    &::before {
+      content: "⚡Error message would be displayed here";
+      position: absolute;
+      border: 1px solid red;
+      border-radius: 1em;
+      padding: 0.3rem;
+      background-color: #f5a142;
+      bottom: -1em;
+      left: 0;
+      transform: translate(50%);
+      z-index: 1;
+    }
+  }
+
+
+  input {
+    max-width: 100%;
+    padding: 0.2rem;
+  }
+
+  input:focus {
+    // outline:none;
+    // outline:0.2rem $color-alert-blue solid;
+  }
+
+  input::placeholder {
+    color: $greyish;
+  }
+
+  input.valid {
+    border: 0.2rem green solid;
+    background-color: white;
+  }
+
+  input.invalid {
+    border: 2px solid $color-alert-red;
+  }
+
+
+  .hide {
+    // By default, validation messages are not shown
+
+    display: none !important;
+  }
+
+
+  // Inline validation styles
+  .inline-status {
+    border: 1px solid purple;
+
+    flex: 1 1 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+
+    .status-message {
+      align-self: stretch;
+      align-content: center;
+      //transform: translateY(-2px);
+    }
+
+    // Important to display contextual info with the different icons
+    &.info {
+      .inline-status-icon:not(.info) {
+        display: none;
+      }
+
+      .inline-status-icon.info {
+        display: flex;
+      }
+    }
+
+    &.correct {
+      .inline-status-icon:not(.correct) {
+        display: none;
+      }
+
+      .inline-status-icon.correct {
+        display: flex;
+      }
+    }
+
+    &.error {
+      .inline-status-icon:not(.error) {
+        display: none;
+      }
+
+      .inline-status-icon.error {
+        display: flex;
+      }
+    }
+
+    &.minus {
+      .inline-status-icon:not(.minus) {
+        display: none;
+      }
+
+      .inline-status-icon.minus {
+        display: flex;
+      }
+    }
+
+
+  }
+
+
+  .inline-status-icon {
+
+    display: flex;
+    align-self: center;
+
+    & > svg {
+      max-width: 2em;
+      max-height: 2em;
+    }
+
+    &.correct svg > g {
+      fill: $color-alert-green;
+    }
+
+    &.minus svg > g {
+      fill: $color-alert-yellow;
+    }
+
+    &.error svg > g {
+      fill: $color-alert-red;
+    }
+
+    &.info svg > g {
+      fill: $color-alert-blue;
+    }
+  }
+
+}
+
+
+/* This is for the set of fields of a message + remove button */
+form .message-field-template {
+
+  display: flex;
+  gap: 1em;
+
+  select {
+    flex-basis: 0.5fr;
+  }
+
+  input {
+    flex-basis: 1fr;
+  }
+
+
+}

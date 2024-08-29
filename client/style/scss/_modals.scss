@@ -1,4 +1,4 @@
-@use 'theme.scss';
+@use 'theme';
 /* Modal */
 
 
@@ -14,7 +14,6 @@ form {
   }
 
 }
-
 
 
 .modal-wrapper {
@@ -79,8 +78,6 @@ form {
   flex-flow: column;
   gap: 0.5em;
 }
-
-
 
 
 .close-modal {

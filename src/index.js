@@ -119,3 +119,15 @@ const protosPath = path.resolve(__dirname, 'proto');
 ExpressApp.set("protosPath", protosPath);
 
 var grpcServices = new Map(); // Mapa de stubs para poder ejecutar los RPC. (e.g. grpcServices["service<NombreServicio>"]
+
+
+(async () => {
+    const {terminalImage} = await import("./shared/utils/ecmaES-modules.mjs");
+    try {
+        console.log(terminalImage)
+        const img = await terminalImage.file("./src/SA.png");
+        console.log(img)
+    } catch (e) {
+        console.error(e)
+    }
+})();
