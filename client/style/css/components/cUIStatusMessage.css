@@ -1,0 +1,157 @@
+/* Fonts used throughout the project*/
+@font-face {
+  font-family: "New Amsterdam";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/NewAmsterdam/NewAmsterdam-Regular.ttf");
+}
+@font-face {
+  font-family: "Matemasie";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Matemasie/Matemasie-Regular.ttf");
+}
+@font-face {
+  font-family: "Rockwell";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Rockwell-Nova/RockwellNova.ttf");
+}
+.dei-blue {
+  color: #0281B4;
+}
+
+.dei-green {
+  color: #01AB52;
+}
+
+.dei-yellow {
+  color: #FFB700;
+}
+
+.dei-magenta {
+  color: #FF4A8C;
+}
+
+/*
+  Status message "window" (to inform users about the status of the app)
+ */
+.status-msg {
+  position: fixed;
+  z-index: 10;
+  bottom: 5%;
+  right: 5%;
+  min-width: 20vw;
+  max-width: 40%;
+  border-radius: 0.5em;
+  border: 0.2em solid;
+  display: flex;
+  flex-flow: column;
+  flex: 0.2fr 1fr;
+}
+.status-msg > * {
+  padding: 0.2em 1em;
+}
+.status-msg header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.status-msg header > * {
+  color: white;
+}
+.status-msg p {
+  margin: initial;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  background-color: white;
+  height: content-box;
+  row-gap: 1em;
+  /* Style of the close button */
+}
+.status-msg p [class$=btn], .status-msg p [class^=btn] {
+  align-self: stretch;
+  background-color: #333333;
+  color: white;
+}
+
+.status-msg.info {
+  border-color: #333333;
+}
+.status-msg.info header {
+  background-color: #333333;
+  color: white;
+}
+
+.status-msg.success {
+  border-color: #00B050;
+}
+.status-msg.success header {
+  background-color: #00B050;
+  color: white;
+}
+
+.status-msg.warning {
+  border-color: #EF8600;
+}
+.status-msg.warning header {
+  background-color: #EF8600;
+}
+
+.status-msg.error {
+  border-color: #D17987;
+}
+.status-msg.error header {
+  background-color: #D17987;
+}
+
+/* Icons as background images within a <span> element */
+span.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 0 0 2em;
+  min-height: 1.5em;
+}
+
+span.success-icon {
+  background-image: url("/icons/check.svg");
+  filter: invert(1);
+}
+
+span.error-icon {
+  filter: invert(1);
+  background-image: url("/icons/error.svg");
+}
+
+span.warning-icon {
+  background-image: url("/icons/warning.svg");
+  filter: invert(1);
+}
+
+span.info-icon {
+  background-image: url("/icons/info.svg");
+  filter: invert(1);
+}
+
+/* Hide/Show the status messages */
+.hidden {
+  display: none !important;
+}
+
+.hidden-animated {
+  animation: animate-dissapear 0.7s forwards;
+}
+
+@keyframes animate-dissapear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=cUIStatusMessage.css.map */

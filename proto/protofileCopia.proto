@@ -1,24 +1,12 @@
 syntax = "proto3";
 package testRoomScene;
-
-
-service ServiceLights { 
+service ServiceLights {
   rpc SetLights (Request) returns (Reply)  {}
-  rpc OtraRPC (Request) returns (Reply){}
-  rpc OtraMas (Request) returns (MessageA){}
-
-
-
-} 
+}
 message Reply {
   string IsOk = 1;
 }
-
-message MessageA {
-  string contenido = 1;
-}
-
 message Request {
   int32 idLight = 1;
   bool Status = 2;
-} 
+}

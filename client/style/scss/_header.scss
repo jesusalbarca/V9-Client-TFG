@@ -1,0 +1,53 @@
+@use 'theme.scss';
+
+body > header {
+  background-color: theme.$dei-blue;
+  display: grid;
+  grid: auto-flow / 1fr 0.2fr 0.2fr;
+  column-gap: 1em;
+  align-items: center;
+  justify-content: space-around;
+
+  h1.tool-name {
+    display: flex;
+    justify-self: left;
+    margin: 0.2em;
+    align-items: flex-end;
+
+    span.dei- * {
+
+      display: inline;
+      background-color: #00B050 !important;
+    }
+
+
+    img {
+      margin: 0 1ex;
+      align-self: center;
+      height: 2ex;
+    }
+
+  }
+
+
+  .user-info {
+    grid-column: 2;
+    justify-self: right;
+
+    display: flex;
+    column-gap: 1em;
+
+    background-color: theme.$dei-yellow;
+    padding: 0.5em;
+    border-radius: 0.5em;
+
+    a {
+      color: white;
+      text-decoration: none;
+      align-self: center;
+    }
+
+  }
+
+
+}

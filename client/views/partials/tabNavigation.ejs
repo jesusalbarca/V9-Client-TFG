@@ -1,0 +1,41 @@
+<!-- Tab Navbar to navigate accross pages -->
+<script>
+
+    window.onload = () => {
+
+        //TODO: review me (showing active tab)
+        <!--const activeTabName = <%- JSON.stringify(activeTab) %>;-->
+        <!--console.log(`ACTIVE TAB - ${activeTabName}`);-->
+        <!--let cssSelector = `nav a [name='${activeTabName}']`;-->
+        <!--console.log(cssSelector);-->
+        <!--let tabDOMElem = document.querySelector(cssSelector);-->
+        <!--console.log(tabDOMElem);-->
+        <!--tabDOMElem.classList.add("active");-->
+
+    }
+
+
+</script>
+
+<%- include("header") %>
+
+<%- include("cUIStatusMessage") %>
+
+
+<nav class="nav nav-tabs">
+
+    <a href="/" class="nav-link" role="tab">Home</a>
+
+    <% if ( session.logged == true ){ %>
+        <a href="/package_editor" class="nav-link" role="tab">Full package editor</a>
+        <a href="/service_editor" class="nav-link" role="tab">Service Editor</a>
+        <a href="/execute_services" class="nav-link" role="tab">Execute Services</a>
+        <a href="/messages" class="nav-link" role="tab">Messages</a>
+        <a href="/services" class="nav-link" role="tab">Services</a>
+        <a href="/packages" class="nav-link" role="tab">Packages</a>
+        <a href="/cameras" class="nav-link" role="tab">Cameras</a>
+    <% } %>
+
+    <%= JSON.stringify(session) %>
+
+</nav>

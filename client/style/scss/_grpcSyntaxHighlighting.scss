@@ -1,0 +1,89 @@
+/**
+  Este archivo contiene los estilos para el resaltado los diferentes elementos
+   de grpc en el editor la interfaz visual
+*/
+
+// Using solarized dark theme
+// https://gist.github.com/ninrod/b0f86d77ebadaccf7d9d4431dd8e2983
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2:#eee8d5;
+$base3:#fdf6e3;
+$yellow: #b58900;
+$orange:#cb4b16;
+$red:#d30102;
+$magenta:  	#d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
+
+
+$datatype-color: #f3fed4;
+
+
+
+
+
+
+// RPC MESSAGE HIGHLIGHTING
+
+
+.package-name-display {
+  color: $magenta;
+}
+
+.variable-name-display {
+  font-family: Monospaced;
+  color: #ffa544;
+}
+
+.datatype-display {
+  color: #1bf3d7;
+}
+
+
+
+
+
+
+.arg-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #ffc6e2;
+}
+
+.rpc-name-display {
+  color: #31d1ff;
+}
+
+
+
+.return-type-display {
+  padding: 0 0.1em;
+  border-radius: 0.3em;
+  background-color: black;
+  color: #f3fed4;
+}
+
+
+.subtype {
+  border: 1px solid white;
+}
+
+
+
+
+.service-name-display {
+  border-radius: 0.3em;
+  padding: 0.2em;
+  background-color: #ff4c73;
+  font-size: large;
+  color: white;
+}

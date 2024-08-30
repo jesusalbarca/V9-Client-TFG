@@ -1,0 +1,65 @@
+@use "theme";
+
+
+@mixin btn-style-reset {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+@mixin round-corners {
+  border-radius: 0.5em;
+}
+
+
+@mixin btn-bg-from-action-type($action-type) {
+  @if $action-type == "main" {
+    background-color: theme.$dei-green;
+    color: white;
+  } @else if ($action-type == "secondary") {
+    background-color: theme.$s2ms-black;
+    color: white;
+  } @else {
+    @error "Invalid action type: #{$action-type}, must be 'main' or 'secondary', applying default styling";
+  }
+}
+
+
+/**
+ Buttons will have a class that starts or ends with "btn"
+ */
+[class$="btn"], [class^="btn"] {
+
+
+  @include btn-style-reset;
+  @include round-corners;
+
+  padding: 1ex;
+  background-color: theme.$dei-yellow;
+
+  color:theme.$s2ms-black
+;
+
+  @debug "Buttons will have a class that starts or ends with 'btn'";
+
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.main {
+    @include btn-bg-from-action-type("main");
+  }
+
+  &.secondary {
+    @include btn-bg-from-action-type("secondary");
+  }
+
+
+}
+
+
+
+
+
+

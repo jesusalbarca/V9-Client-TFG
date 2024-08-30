@@ -1,0 +1,58 @@
+// COLOR PALETTE
+$dei-blue: #0281B4;
+$dei-green: #01AB52;
+$dei-yellow: #FFB700;
+$dei-magenta: #FF4A8C;
+
+
+$s2ms-black: #333333;
+$uc3m-blue: #275CA2;
+
+
+$accent-success: #00B050;
+$accent-warn: #EF8600;
+$accent-error: #D17987;
+
+
+// OTHER THEME RESOURCE PATHS (may change if the public/static folder is configured to be accesible in a different way)
+$iconsPath: "/icons/";
+$fontsPath: "/fonts/";
+
+
+/* Fonts used throughout the project*/
+@font-face {
+  font-family: 'New Amsterdam';
+  font-style: normal;
+  font-weight: 400;
+  src: url($fontsPath + ("NewAmsterdam/NewAmsterdam-Regular.ttf"));
+}
+
+@font-face {
+  font-family: 'Matemasie';
+  font-style: normal;
+  font-weight: 400;
+  src: url($fontsPath +("Matemasie/Matemasie-Regular.ttf"));
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  font-style: normal;
+  font-weight: 400;
+  src: url($fontsPath + ("Rockwell-Nova/RockwellNova.ttf"));
+}
+
+.dei-blue {
+  color: $dei-blue;
+}
+
+.dei-green {
+  color: $dei-green;
+}
+
+.dei-yellow {
+  color: $dei-yellow;
+}
+
+.dei-magenta {
+  color: $dei-magenta;
+}

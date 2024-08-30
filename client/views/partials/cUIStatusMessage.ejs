@@ -1,0 +1,60 @@
+<!--
+@alreylz
+This is a template for a popup UI component that will display a message to the user.
+It will only display if there is a statusMsg set when rendering the page using EJS
+
+The statusMsg is set in the controller
+ -->
+
+<% if(locals.statusMsg) {
+    let msgTypeCssClass = "info";
+    if (statusMsg.type)
+        msgTypeCssClass = statusMsg.type;
+%>
+
+<!-- Popup UI  Component (will only display if there is a statusMsg set when rendering the page the page )-->
+<div class="component status-msg  <%= msgTypeCssClass %>">
+
+    <link rel="stylesheet" type="text/css" href="/style/components/cUIStatusMessage.css">
+    <header>
+
+        <span class="icon <%= msgTypeCssClass + "-icon" %>"></span>
+        <h1>
+            <%= statusMsg.title %>
+        </h1>
+
+    </header>
+    <p>
+        <%= statusMsg.msg %>
+
+        <button class="close-btn">Close</button>
+
+    </p>
+
+    <script>
+        const infoPanel = document.querySelector('.status-msg');
+
+        // Time to make the info panel disappear automatically.
+        const disappearInSeconds = 5
+
+        console.log(infoPanel)
+        if (infoPanel) {
+
+            //Allow the info panel to be closed by clicking on the close button.
+            const closeBtn = infoPanel.querySelector('.close-btn');
+            closeBtn.addEventListener('click', () => {
+                infoPanel.classList.add("hidden-animated");
+            });
+
+            // Make the info panel disappear automatically.
+            const toId = setTimeout(() => {
+                infoPanel.classList.add("hidden-animated");
+                clearTimeout(toId);
+            }, disappearInSeconds * 1000);
+        }
+
+
+    </script>
+</div>
+
+<% } %>

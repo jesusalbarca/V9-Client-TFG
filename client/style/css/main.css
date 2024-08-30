@@ -1,0 +1,83 @@
+
+li {
+    list-style: none;
+    justify-content: center;
+}
+
+
+.datatype-display {
+    color: #1bf3d7;
+}
+
+
+.rpc-name-display {
+    /*color: #05a8ed;*/
+    color: #31d1ff;
+
+}
+
+.arg-type-display {
+    padding: 0 0.1em;
+    border-radius: 0.3em;
+    background-color: black;
+    color: #ffc6e2;
+}
+
+.return-type-display {
+    padding: 0 0.1em;
+    border-radius: 0.3em;
+    background-color: black;
+    color: #f3fed4;
+}
+
+
+.subtype {
+    border: 1px solid white;
+}
+
+.variable-name-display {
+    color: #ffa544;
+}
+
+
+.service-name-display {
+    border-radius: 0.3em;
+    padding: 0.2em;
+    background-color: #ff4c73;
+    font-size: large;
+    color: white;
+}
+
+
+/*
+    EXECUTE_SERVICES
+ */
+
+
+.proto-file-display {
+    background-color: darkturquoise;
+    color: white;
+    border-radius: 0.2em;
+    padding: 0.1em;
+}
+
+
+#div_principal>header{
+    background-color: #275567;
+    padding: 2em;
+    color:white;
+}
+
+
+form[name='proto-load-form'] {
+    color: white;
+    background-color: #10434e;
+    padding: 1em;
+}
+
+form[name='proto-load-form'] button {
+    padding: 0.2em;
+    border: none;
+    border: 0.1em solid white;
+    background-color: #a4c3ff;
+}

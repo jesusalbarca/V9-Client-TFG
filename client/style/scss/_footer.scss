@@ -1,0 +1,62 @@
+@use 'theme';
+@use 'globals';
+
+
+/*
+Footer
+ */
+
+footer {
+  margin-top: auto;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+
+
+  background-color: theme.$dei-blue;
+  padding: 0.8em;
+
+
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+
+  .credits {
+    display: flex;
+    flex: 1 1 30%;
+    flex-flow: column;
+    align-items: center;
+    font-weight: bold;
+
+    /* The vector alreylz icon */
+    img {
+      filter: brightness(100) invert(1);
+      width: 2em;
+      height: auto;
+      margin: 0.5em;
+    }
+
+    /* The list of links of the footer*/
+    ul {
+      display: flex;
+      flex-flow: row;
+      gap: 0.5em;
+      list-style: none;
+      padding: 0;
+
+      li {
+        a {
+          color: theme.$s2ms-black;
+          text-decoration: none;
+          font-size: 0.8em;
+        }
+      }
+    }
+
+
+  }
+
+
+}

@@ -1,0 +1,40 @@
+  <div id="signup-form-wrapper" class="component hidden modal-wrapper">
+
+
+        <form class="modal-form" action="/signUp" method="POST">
+            <header>
+                <h1> Sign up</h1>
+                <button type="button" class="close-modal">X</button>
+            </header>
+            <fieldset>
+                <label>Username <input name="username" placeholder="username" type="text"/></label>
+                <label>Name <input name="name" placeholder="name e.g., Alejandro" type="text"/></label>
+                <label>Surname <input name="surname" placeholder="surname e.g., Rey" type="text"/></label>
+                <label>Email <input name="email" placeholder="a@code.com" type="email"/></label>
+
+                <label>Password <input name="password1" type="password"/></label>
+                <label>Repeat password <input name="password2" type="password"/></label>
+                <!--    <label>Picture (Optional) <input type="file"/></label>-->
+                <button class="submit"> Submit</button>
+
+                <button type="button" class="signIn secondary-action"> I have an account</button>
+            </fieldset>
+
+        </form>
+    </div>
+
+
+    <div id="signin-form-wrapper" class="component hidden  modal-wrapper">
+        <form id="" class="modal-form" action="/signIn" method="POST">
+            <header>
+                <h1> Sign in</h1>
+                <button type="button" class="close-modal">X</button>
+            </header>
+            <fieldset>
+                <label>Username<input name="username" placeholder="username" type="text"/></label>
+                <label>Password <input name="password" type="password"/></label>
+                <button class="submit">Submit</button>
+            </fieldset>
+
+        </form>
+    </div>

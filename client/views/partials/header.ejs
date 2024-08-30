@@ -1,0 +1,28 @@
+<header>
+    <!--    <link href="/style/header.css" rel="stylesheet" type="text/css"/>-->
+    <!--    <link href="/style/buttons.css" rel="stylesheet" type="text/css"/>-->
+
+    <h1 class="tool-name"><img src="/images/IXCI-icon.png"/>
+        The&#160<span class="dei-yellow">I</span>mmersive&#160e<span class="dei-green">X</span>perimenter&#160<span
+                class="dei-magenta">C</span>ontrol&#160<span class="dei-yellow">I</span>nterface</h1>
+
+
+    <!--  Login/Logout buttons or User information  -->
+
+    <% if (typeof session.logged == 'undefined'){ %>
+        <button type="button" class="accent-1 main signup-btn"> Sign Up</button>
+        <button type="button" class="accent-2 secondary signin-btn"> Sign In</button>
+
+        <script defer type="module" src="/cli-js/Shared/User_Session_Modals.js"></script>
+    <% }else{ %>
+
+        <div class="user-info">
+            <h3 class="user-name"><%= (typeof session.username !== 'undefined') ? session.username : "error username" %>
+            </h3>
+            <button type="button" class="accent1 secondary logout-btn"><a href="/logout">Logout</a></button>
+        </div>
+
+    <% } %>
+
+</header>
+

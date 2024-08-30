@@ -1,0 +1,87 @@
+@use "sass:map";
+@use 'sass:list';
+
+
+// Function to convert px to rem (recommended always for media queries)
+@function px-to-rem($px-value) {
+  // Define the base font size (by default is always this)
+  $base-font-size: 16px;
+  @return calc($px-value / $base-font-size) * 1rem;
+}
+
+
+// For Mobile Devices:
+$mobile-sizes: (px-to-rem(320px), px-to-rem(480px));
+// iPads and Tablets:
+$tablet-sizes: (px-to-rem(481px), px-to-rem(768px));
+// Laptops and small screen :
+$laptop-sizes: (px-to-rem(769px), px-to-rem(1024px));
+// Large screens and Desktops:
+$large-sizes: (px-to-rem(1025px), px-to-rem(1200px));
+// TV and Extra Large Screens :
+$large-size: px-to-rem(1200px);
+
+
+//todo: rethink at some point to reuse
+$breakpoints-up: ("medium" : "40em", "large": "64em", "xlarge":"87.5em");
+$breakpoints-down: ("small" : "39.9375em", "medium": "63.9375em", "large":"87.435em");
+
+
+@mixin breakpoint-up($size) {
+  @media(min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media(max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoints($named_size_min, $named_size_max) {
+
+  @media (map.get($breakpoints-down, $named_size_min) <= width <= map.get($breakpoints-down, $named_size_max)) {
+    @content;
+  }
+}
+
+
+/* Add this if you want to debug a given element */
+@mixin debug-me($active, $color:red) {
+
+  @if $active {
+    border: $color 1px solid;
+    background-color: $color;
+
+    // Show also which media query should be active now
+    @include breakpoint-down(small) {
+      &::before {
+        content: "small";
+      }
+    }
+    @include breakpoints(small, medium) {
+      &::before {
+        content: "medium";
+      }
+    }
+    @include breakpoints(medium, large) {
+      &::before {
+        content: "large";
+      }
+    }
+    @include breakpoint-up(xlarge) {
+      &::before {
+        content: "xlarge";
+      }
+    }
+
+
+  }
+
+}
+
+
+
+
+
